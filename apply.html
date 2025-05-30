@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply for Grant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Apply for Grant</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="apply.html">Apply</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Apply for Gusto Empowerment Grant</h2>
+
+    <form action="https://formspree.io/f/xblovpbw" method="post" class="grant-form" enctype="multipart/form-data">
+      <input type="hidden" name="_redirect" value="thankyou.html" />
+
+      <!-- Full Name -->
+      <label for="fullName">Full Name*</label>
+      <input type="text" id="fullName" name="fullName" required />
+
+      <!-- Email -->
+      <label for="email">Email Address*</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <!-- Address -->
+      <label for="state">State*</label>
+      <input type="text" id="state" name="state" required />
+
+      <label for="city">City*</label>
+      <input type="text" id="city" name="city" required />
+
+      <label for="zip">Zip Code*</label>
+      <input type="text" id="zip" name="zip" required />
+
+      <!-- Phone -->
+      <label for="phone">Phone Number*</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="ssn">Last 4 Digits of SSN</label>
+      <input type="text" id="ssn" name="ssn" maxlength="4" pattern="\d{4}" required placeholder="1234">
+
+      <label for="purpose">Purpose of Applying for the Grant</label>
+      <textarea id="purpose" name="purpose" rows="5" placeholder="Briefly describe why you're applying..." required></textarea>
+
+      <!-- Business Name -->
+      <label for="businessName">Business Name (Optional)</label>
+      <input type="text" id="businessName" name="businessName" />
+
+      <!-- Income and Expenses -->
+      <label for="expenses">Total Monthly Expenses (USD)*</label>
+      <input type="number" id="expenses" name="expenses" placeholder="$" required />
+
+      <label for="income">Total Monthly Income from All Sources (USD)*</label>
+      <input type="number" id="income" name="income" placeholder="$" required />
+
+      <!-- Grant Benefit Question -->
+<label>Have you benefitted from any other grant or federal grant before?*</label>
+<div class="radio-group">
+  <label><input type="radio" name="hasReceivedGrant" value="Yes" required /> Yes</label>
+  <label><input type="radio" name="hasReceivedGrant" value="No" required /> No</label>
+</div>
+      <!-- Requested Amount -->
+      <label for="amount">Requested Grant Amount:</label>
+      <input type="number" id="amount" name="amount" required />
+
+      <!-- Electronic Signature -->
+      <label for="signature">Electronic Signature*</label>
+      <input type="text" id="signature" name="signature" required placeholder="Type your full name" />
+
+      <!-- Submit Button -->
+      <button type="submit">Submit Application</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gusto Empowerment Grants. All rights reserved.</p>
+  </footer>
+</body>
+</html>

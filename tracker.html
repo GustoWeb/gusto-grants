@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Application | Gusto Empowerment Grants</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tracker-section {
+      padding: 50px 20px;
+      text-align: center;
+      background-color: #fff5f5;
+    }
+
+    .tracker-section h2 {
+      font-size: 28px;
+      color: #d93025;
+      margin-bottom: 15px;
+    }
+
+    .tracker-section p {
+      font-size: 17px;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tracker-section input[type="text"] {
+      padding: 12px;
+      width: 300px;
+      max-width: 90%;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .tracker-section button {
+      padding: 12px 25px;
+      background-color: #d93025;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .tracker-section button:hover {
+      background-color: #b8241e;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.jpeg" alt="Gusto Logo" style="height: 60px;">
+    <h1>Gusto Empowerment Grants</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="apply.html">Apply</a>
+      <a href="contact.html">Contact</a>
+      <a href="tracker.html">Track Application</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="tracker-section">
+      <h2>Track Your Application</h2>
+      <p>Enter your Application ID or email address below to check the current status of your Gusto grant application.</p>
+
+      <input type="text" id="appInput" placeholder="e.g. gusto001 or john@example.com" />
+      <button onclick="checkStatus()">Check Status</button>
+
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gusto Empowerment Grants. All rights reserved.</p>
+  </footer>
+
+  <script>
+  const API_URL = 'https://script.google.com/macros/s/AKfycbyn_9NX31DZ4KRZZB1cCyhr4DKeRhvq2a5XNm4Q5Ip_FLe2nB4wLLkEeDqhZXfv0LqtXA/exec';
+
+  function checkStatus() {
+    const input = document.getElementById("appInput").value.trim().toLowerCase();
+    const resultDiv = document.getElementById("result");
+
+    // Reset styles
+    resultDiv.innerHTML = "";
+    resultDiv.style.color = "";
+    resultDiv.style.backgroundColor = "";
+    resultDiv.style.border = "";
+    resultDiv.style.padding = "15px";
+    resultDiv.style.borderRadius = "8px";
+
+    if (!input) {
+      resultDiv.innerHTML = "❌ Please enter an Application ID or Email.";
+      resultDiv.style.color = "#b00020";
+      resultDiv.style.backgroundColor = "#fdecea";
+      resultDiv.style.border = "1px solid #f5c6cb";
+      return;
+    }
+
+    fetch(`${API_URL}?q=${encodeURIComponent(input)}`)
+      .then(response => response.text())
+      .then(data => {
+        if (data.toLowerCase().includes("status:")) {
+          resultDiv.innerHTML = ✅ <strong>${data}</strong>;
+          resultDiv.style.color = "#155724";
+          resultDiv.style.backgroundColor = "#d4edda";
+          resultDiv.style.border = "1px solid #c3e6cb";
+        } else {
+          resultDiv.innerHTML = ❌ ${data};
+          resultDiv.style.color = "#721c24";
+          resultDiv.style.backgroundColor = "#f8d7da";
+          resultDiv.style.border = "1px solid #f5c6cb";
+        }
+      })
+      .catch(error => {
+        resultDiv.innerHTML = "❌ Error fetching application status.";
+        resultDiv.style.color = "#721c24";
+        resultDiv.style.backgroundColor = "#f8d7da";
+        resultDiv.style.border = "1px solid #f5c6cb";
+      });
+  }
+  </script>
+</body>
+</html>
