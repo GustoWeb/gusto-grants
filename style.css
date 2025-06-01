@@ -422,3 +422,9 @@ form textarea {
   border-radius: 5px;
   resize: vertical;
 }
+.thankyou-main {
+  text-align: center;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-top: 4px solid #c70039;
+}
