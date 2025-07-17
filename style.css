@@ -567,3 +567,10 @@ form textarea {
 .apply-btn:hover {
   background-color: #9e0000;
 }
+.address-format {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
