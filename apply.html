@@ -34,16 +34,44 @@
       <input type="date" id="dob" name="dob" required>
 
       <!-- Address -->
-      <label for="state">State*</label>
-      <input type="text" id="state" name="state" required />
+<!-- Country Selector -->
+<label for="country">Select Your Country:</label>
+<select id="country" name="country" onchange="toggleAddressFormat()">
+  <option value="usa">United States</option>
+  <option value="canada">Canada</option>
+</select>
 
-      <label for="city">City*</label>
-      <input type="text" id="city" name="city" required />
+<!-- USA Address Fields -->
+<div id="usa-address" class="address-format">
+  <label for="us-street">Street Address:</label>
+  <input type="text" id="us-street" name="us-street" required>
 
-      <label for="zip">Zip Code*</label>
-      <input type="text" id="zip" name="zip" required />
+  <label for="us-city">City:</label>
+  <input type="text" id="us-city" name="us-city" required>
 
-      <!-- Phone -->
+  <label for="us-state">State:</label>
+  <input type="text" id="us-state" name="us-state" required>
+
+  <label for="us-zip">ZIP Code:</label>
+  <input type="text" id="us-zip" name="us-zip" required>
+</div>
+
+<!-- Canada Address Fields -->
+<div id="canada-address" class="address-format" style="display: none;">
+  <label for="ca-street">Street Address:</label>
+  <input type="text" id="ca-street" name="ca-street" required>
+
+  <label for="ca-city">City:</label>
+  <input type="text" id="ca-city" name="ca-city" required>
+
+  <label for="ca-province">Province:</label>
+  <input type="text" id="ca-province" name="ca-province" required>
+
+  <label for="ca-postal">Postal Code:</label>
+  <input type="text" id="ca-postal" name="ca-postal" required>
+</div>
+
+           <!-- Phone -->
       <label for="phone">Phone Number*</label>
       <input type="tel" id="phone" name="phone" required />
 
@@ -84,5 +112,21 @@
   <footer>
     <p>&copy; 2025 Gusto Empowerment Grants. All rights reserved.</p>
   </footer>
+<script>
+  function toggleAddressFormat() {
+    const country = document.getElementById("country").value;
+    const usaFields = document.getElementById("usa-address");
+    const canadaFields = document.getElementById("canada-address");
+
+    if (country === "canada") {
+      canadaFields.style.display = "block";
+      usaFields.style.display = "none";
+    } else {
+      usaFields.style.display = "block";
+      canadaFields.style.display = "none";
+    }
+  }
+</script>
+
 </body>
 </html>
